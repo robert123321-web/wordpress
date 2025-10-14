@@ -294,4 +294,85 @@ function dcg_excerpt_more($more) {
     return '...';
 }
 add_filter('excerpt_more', 'dcg_excerpt_more');
+
+function dcg_handle_registration() {
+    // Verify nonce
+    if (!isset($_POST['dcg_register_nonce']) || !wp_verify_nonce($_POST['dcg_register_nonce'], 'dcg_register_user_action')) {
+        wp_redirect(home_url('/signup?registration=failed&error=Security check failed'));
+        exit;
+    }
+
+    // Get form data
+    $username = sanitize_user($_POST['username']);
+    $email = sanitize_email($_POST['email']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validate
+    if (empty($username) || empty($email) || empty($password)) {
+        wp_redirect(home_url('/signup?registration=failed&error=All fields are required'));
+        exit;
+    }
+
+    if ($password !== $confirm_password) {
+        wp_redirect(home_url('/signup?registration=failed&error=Passwords do not match'));
+        exit;
+    }
+
+    if (strlen($password) < 8) {
+        wp_redirect(home_url('/signup?registration=failed&error=Password must be at least 8 characters'));
+        exit;
+    }
+
+    if (username_exists($username)) {
+        wp_redirect(home_url('/signup?registration=failed&error=Username already exists'));
+        exit;
+    }
+
+    if (email_exists($email)) {
+        wp_redirect(home_url('/signup?registration=failed&error=Email already registered'));
+        exit;
+    }
+
+    // Create user
+    $user_id = wp_create_user($username, $password, $email);
+
+    if (is_wp_error($user_id)) {
+        wp_redirect(home_url('/signup?registration=failed&error=' . urlencode($user_id->get_error_message())));
+        exit;
+    }
+
+    // Success - redirect to login
+    wp_redirect(home_url('/login?registered=success'));
+    exit;
+}
+add_action('admin_post_nopriv_dcg_register_user', 'dcg_handle_registration');
+add_action('admin_post_dcg_register_user', 'dcg_handle_registration');
+
+function dcg_login_redirect($redirect_to, $request, $user) {
+    return home_url();
+}
+add_filter('login_redirect', 'dcg_login_redirect', 10, 3);
+
+function dcg_login_failed() {
+    wp_redirect(home_url('/login?login=failed'));
+    exit;
+}
+add_action('wp_login_failed', 'dcg_login_failed');
+
+function dcg_logout_redirect() {
+    wp_redirect(home_url('/login?logout=success'));
+    exit;
+}
+add_action('wp_logout', 'dcg_logout_redirect');
+
+// Custom logout URL handler
+function dcg_custom_logout() {
+    if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+        wp_logout();
+        wp_redirect(home_url('/login?logout=success'));
+        exit;
+    }
+}
+add_action('init', 'dcg_custom_logout');
 ?>

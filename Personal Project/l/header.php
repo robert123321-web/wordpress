@@ -27,5 +27,16 @@
             ));
             ?>
         </nav>
+
+        <!-- Add authentication links -->
+        <div class="auth-nav">
+            <?php if (is_user_logged_in()) : ?>
+                <span class="user-greeting">Hello, <?php echo esc_html(wp_get_current_user()->display_name); ?></span>
+                <a href="<?php echo esc_url(add_query_arg('action', 'logout', home_url())); ?>" class="auth-nav-link logout-link">Logout</a>
+            <?php else : ?>
+                <a href="<?php echo get_template_directory_uri(); ?>/login.php" class="auth-nav-link">Login</a>
+                <a href="<?php echo get_template_directory_uri(); ?>/signup.php" class="auth-nav-link signup-link">Sign Up</a>
+            <?php endif; ?>
+        </div>
     </div>
 </header>
