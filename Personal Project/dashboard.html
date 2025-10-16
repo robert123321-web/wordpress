@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dynamic Creative Code Gallery</title>
+    <link rel="stylesheet" href="l/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    Dynamic Code Gallery
+                </a>
+            </h1>
+            
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#projects">My Projects</a></li>
+                </ul>
+            </nav>
+
+            <div class="auth-nav">
+                <span class="user-greeting">Welcome back!</span>
+                <a href="l/logout.php" class="auth-nav-link logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to Your Dashboard</h1>
+            <p class="hero-description">
+                Manage your creative code projects and explore new ideas.
+            </p>
+        </section>
+
+        <section class="filter-section">
+            <div class="gallery-grid">
+                <div class="auth-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+                    <div class="auth-header">
+                        <h2 class="auth-title">Your Account</h2>
+                        <p class="auth-subtitle">You are successfully logged in!</p>
+                    </div>
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Start creating and sharing your amazing code projects with the community.
+                        </p>
+                        <a href="index.html" class="auth-button" style="display: inline-block; text-decoration: none;">
+                            Explore Gallery
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Dynamic Creative Code Gallery. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Dinamike e Kodit Kreativ</title>
+    <link rel="stylesheet" href="l/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    Galeria e Kodit Dinamik
+                </a>
+            </h1>
+            
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="index.html">Kreu</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#about">Rreth</a></li>
+                </ul>
+            </nav>
+
+            <!-- Added authentication navigation buttons -->
+            <div class="auth-nav">
+                <a href="login.html" class="auth-nav-link">Hyr</a>
+                <a href="signup.html" class="auth-nav-link signup-link">Regjistrohu</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="hero-section">
+            <h1 class="hero-title">Galeria Dinamike e Kodit Kreativ</h1>
+            <p class="hero-description">
+                Eksploro një koleksion të kuruar projektesh të kodimit kreativ, vizualizime interaktive, dhe eksperimente inovative web.
+            </p>
+        </section>
+
+        <section class="filter-section">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-category="all">Të Gjitha Projektet</button>
+                <button class="filter-btn" data-category="javascript">JavaScript</button>
+                <button class="filter-btn" data-category="css">CSS</button>
+                <button class="filter-btn" data-category="canvas">Canvas</button>
+                <button class="filter-btn" data-category="webgl">WebGL</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" data-category="javascript">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Project 1" class="gallery-item-image">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Pjesëza Interaktive</h3>
+                        <p class="gallery-item-excerpt">Një sistem pjesëzash hipnotizues që përgjigjet ndaj lëvizjes së mausit...</p>
+                        <div class="gallery-item-meta">
+                            <span class="meta-tag">JavaScript</span>
+                            <span class="meta-tag">Canvas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="css">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Project 2" class="gallery-item-image">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Forma në Transformim me CSS</h3>
+                        <p class="gallery-item-excerpt">Animacione të pastërta CSS që krijojnë efekte të lëvizjes fluide...</p>
+                        <div class="gallery-item-meta">
+                            <span class="meta-tag">CSS</span>
+                            <span class="meta-tag">Animacion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="webgl">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Project 3" class="gallery-item-image">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Simulim Valësh 3D</h3>
+                        <p class="gallery-item-excerpt">Simulim në kohë reale i valëve 3D duke përdorur shader-a WebGL...</p>
+                        <div class="gallery-item-meta">
+                            <span class="meta-tag">WebGL</span>
+                            <span class="meta-tag">3D</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Galeria Dinamike e Kodit Kreativ. Të gjitha të drejtat të rezervuara.</p>
+        </div>
+    </footer>
+
+    <script src="l/main.js"></script>
+</body>
+</html>

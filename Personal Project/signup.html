@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Regjistrohu — Galeria Dinamike e Kodit Kreativ</title>
+  <link rel="stylesheet" href="l/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1 class="site-title"><a href="index.html" style="text-decoration:none;color:inherit;">Galeria e Kodit Dinamik</a></h1>
+      <nav class="main-navigation">
+        <ul>
+          <li><a href="index.html">Kreu</a></li>
+          <li><a href="#gallery">Galeria</a></li>
+          <li><a href="#about">Rreth</a></li>
+        </ul>
+      </nav>
+
+      <div class="auth-nav">
+        <a id="login-link" class="auth-nav-link" href="/wp-login.php">Hyr</a>
+        <a id="signup-link" class="auth-nav-link signup-link" href="/wp-login.php?action=register">Regjistrohu</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="hero-section">
+      <h2>Regjistrohu</h2>
+      <p>Nëse regjistrimi është çaktivizuar në WordPress, ky formular nuk do të krijojë llogari. Aktivizoni regjistrimin në Panel → Settings → General.</p>
+
+      <form id="register-form" method="post" class="auth-form">
+        <label>
+          Përdorues
+          <input name="user_login" type="text" required>
+        </label>
+        <label>
+          Email
+          <input name="user_email" type="email" required>
+        </label>
+        <input type="hidden" name="redirect_to" id="reg_redirect_to" value="">
+        <button type="submit">Krijo Llogari</button>
+      </form>
+
+      <p>Keni tashmë llogari? <a href="login.html">Hyni</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-content"><p>&copy; 2025 Galeria Dinamike e Kodit Kreativ.</p></div></footer>
+
+  <script>
+  (function(){
+    var base = window.location.origin;
+    var path = window.location.pathname;
+    var idx = path.indexOf('/wp-content/');
+    if (idx !== -1) base += path.substring(0, idx);
+
+    var form = document.getElementById('register-form');
+    var redirectField = document.getElementById('reg_redirect_to');
+    var redirect = encodeURIComponent(window.location.origin + '/'); // change if desired
+
+    if (form) {
+      form.action = base + '/wp-login.php?action=register';
+      redirectField.value = redirect;
+    }
+  })();
+  </script>
+</body>
+</html>

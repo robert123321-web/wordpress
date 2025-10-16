@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hyr — Galeria Dinamike e Kodit Kreativ</title>
+  <link rel="stylesheet" href="l/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1 class="site-title"><a href="index.html" style="text-decoration:none;color:inherit;">Galeria e Kodit Dinamik</a></h1>
+      <nav class="main-navigation">
+        <ul>
+          <li><a href="index.html">Kreu</a></li>
+          <li><a href="#gallery">Galeria</a></li>
+          <li><a href="#about">Rreth</a></li>
+        </ul>
+      </nav>
+
+      <div class="auth-nav">
+        <a id="login-link" class="auth-nav-link" href="/wp-login.php">Hyr</a>
+        <a id="signup-link" class="auth-nav-link signup-link" href="/wp-login.php?action=register">Regjistrohu</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="hero-section">
+      <h2>Hyr</h2>
+      <p>Kjo faqe përdor autentikimin e WordPress. Klikoni Hyr për të hapur formularin e hyrjes së WordPress (do të ridrejtoheni përsëri këtu).</p>
+
+      <form id="login-form" method="post" class="auth-form">
+        <label>
+          Përdorues ose Email
+          <input name="log" type="text" required>
+        </label>
+        <label>
+          Fjalëkalimi
+          <input name="pwd" type="password" required>
+        </label>
+        <label class="remember">
+          <input name="rememberme" type="checkbox" value="forever"> Më mbaj të kyçur
+        </label>
+        <input type="hidden" name="redirect_to" id="redirect_to" value="">
+        <button type="submit">Hyr</button>
+      </form>
+
+      <p>Nuk keni llogari? <a href="signup.html">Regjistrohu</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-content"><p>&copy; 2025 Galeria Dinamike e Kodit Kreativ.</p></div></footer>
+
+  <script>
+  (function(){
+    // compute WordPress base (works if this file lives inside a theme folder)
+    var base = window.location.origin;
+    var path = window.location.pathname;
+    var idx = path.indexOf('/wp-content/');
+    if (idx !== -1) base += path.substring(0, idx);
+
+    var form = document.getElementById('login-form');
+    var redirectField = document.getElementById('redirect_to');
+    var redirect = window.location.origin + '/'; // change if you want a different redirect
+    // redirect back to previous page after login (optional)
+    redirect = encodeURIComponent(document.referrer || window.location.origin + '/');
+
+    if (form) {
+      form.action = base + '/wp-login.php';
+      redirectField.value = redirect;
+    }
+  })();
+  </script>
+</body>
+</html>
